@@ -12,10 +12,11 @@ print (tf.__version__)
 filename="vid_ex0.mp4"
 num = 0 # implement with a decorator
 
-def saveImage(ndArr):
+def saveImage(ndArr,i):
     im = Image.fromarray(ndArr)
-    im.save("img{}.jpeg".format(num))
-    num+=1
+    im.save("/tmp/img{}.jpeg".format(i))
+    print("saving file {}".format("/tmp/img{}.jpeg".format(i)))
+    
 
 def showImage(ndArr):
     im = Image.fromarray(ndArr)
@@ -51,22 +52,22 @@ def contours(ndArr):
 def bounding_rect(ndArr,origArr):
     ndArrCopy = ndArr.copy()
     cv2.rectangle(ndArrCopy, (0, 0), ndArrCopy.shape[::-1], (255, 255, 255), 15)
-    contours, _ = cv2.findContours(ndArrCopy, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    _,contours, _ = cv2.findContours(ndArrCopy, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     if len(contours) > 1:
         cv2.drawContours(ndArrCopy, contours, 1, (125, 125, 125), 5)
         x, y, w, h = cv2.boundingRect(contours[1])
-        ndArr = cv2.rectangle(origArr, (x, y), (x + w, y + h), (0, 255, 0), 3)
+        ndArr = cv2.rectangle(origArr.copy(), (x, y), (x + w, y + h), (0, 255, 0), 3)
     return ndArr
 
-cap = cv2.VideoCapture(filename)
+cap = cv2.VideoCapture(0)
 
 base = None
 iter = 0
 ret, frame = cap.read()
 
 while(ret ==True):
-    # if iter%90 == 0 :
-    if True:
+    if iter%90 == 0 :
+    # if True:
 
         frame           = resize(frame)
         frame           = grayscale(frame)
@@ -74,6 +75,7 @@ while(ret ==True):
 
         if base is None:
             base = frame_gauss
+            continue
 
         frame_diff      = subtract(frame_gauss,base)
         frame_thresh    = threshold(frame_diff)
@@ -81,9 +83,10 @@ while(ret ==True):
 
         b_box = bounding_rect(frame_open,frame)
 
+        saveImage(b_box,iter)
         # showImage(b_box)
-        cv2.imshow("frame_open",b_box)
-        cv2.waitKey(1)
+        #cv2.imshow("frame_open",b_box)
+        #cv2.waitKey(1)
 
     iter +=1
     print("frame number {}".format(iter))
