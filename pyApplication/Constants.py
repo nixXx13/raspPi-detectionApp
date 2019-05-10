@@ -2,9 +2,11 @@ import numpy as np
 
 class Constants():
 
+    VERBOSE = True
+
     # type np.ndarr
     # if None , first frame will be base
-    BASE = None # np.load("base.npy") # None
+    BASE = None# np.load("base.npy") # None
 
     SOURCE = 1
 
@@ -15,3 +17,9 @@ class Constants():
     BOUNDING_BOX_THRESHOLD = 100*100
 
     MODEL_PATH = 'my_model9792.h5'
+
+    CV_DIMS = (240,320,3)
+    FULL_IMAGE_SIZE = CV_DIMS[0]*CV_DIMS[1]
+
+    KERAS_INPUT_DIMS = (224,224,3)
+
