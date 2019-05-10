@@ -3,6 +3,7 @@ import numpy as np
 class Constants():
 
     VERBOSE = True
+    VERBOSE_UI = True
 
     # type np.ndarr
     # if None , first frame will be base
@@ -14,7 +15,7 @@ class Constants():
     OPENNING_KERNEL = np.ones((10,10),np.uint8)
     DILATION_KERNEL = np.ones((10,10),np.uint8)
 
-    BOUNDING_BOX_THRESHOLD = 100*100
+    BOUNDING_BOX_THRESHOLD = 50*50
 
     MODEL_PATH = 'my_model9792.h5'
 
