@@ -1,6 +1,7 @@
 from Constants import Constants
 from PIL import Image
 import cv2
+import time
 
 def showImage(ndArr):
     im = Image.fromarray(ndArr)
@@ -17,3 +18,15 @@ class Source:
 
     def release(self):
         self.source.release()
+
+
+class USBCamera(Source):
+
+    def __init__(self):
+        super().__init__(source=Constants.SOURCE)
+
+        # first frames of usb camera are dark and out of focus
+        for i in range(5):
+            self.read()
+
+
