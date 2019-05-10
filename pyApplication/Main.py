@@ -29,9 +29,9 @@ def Main():
         frame_thresh    = ImgOps.threshold(frame_diff)
         frame_open      = ImgOps.openning(frame_thresh)
 
-        cv2.imshow("frame_diff", frame_diff)
-        cv2.imshow("frame_thresh", frame_thresh)
-        cv2.imshow("frame_open", frame_open)
+        cv2.imshow("frame_diff", frame_diff)        if Constants.VERBOSE_UI else None
+        cv2.imshow("frame_thresh", frame_thresh)    if Constants.VERBOSE_UI else None
+        cv2.imshow("frame_open", frame_open)        if Constants.VERBOSE_UI else None
 
         contours = ImgOps.getContours(frame_open)
 
@@ -42,7 +42,7 @@ def Main():
 
                 framex = frame[y:y + h, x:x + w]
                 framex = ImgOps.resize(framex, Constants.KERAS_INPUT_DIMS)
-                cv2.imshow("framex", framex)
+                cv2.imshow("framex", framex) if Constants.VERBOSE_UI else None
                 framex = np.expand_dims(framex,axis=0)
 
                 probs = model.predict(framex)
