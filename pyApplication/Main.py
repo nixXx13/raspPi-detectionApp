@@ -53,7 +53,7 @@ def Main():
 
     print("Releasing resources and closing opened windows")
     src.release()
-    cv2.destroyAllWindows() if Constants.VERBOSE else None
+    cv2.destroyAllWindows() if Constants.VERBOSE_UI else None
 
 
 if __name__ == '__main__':
