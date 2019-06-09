@@ -12,7 +12,7 @@ def grayscale(ndArr):
     return np.array(im)[:,:,0]  # TODO - find better grayscale - imgray = cv.cvtColor(im, cv.COLOR_BGR2GRAY)?
 
 def resize(ndArr , dim = Constants.CV_DIMS):
-    return scipy.misc.imresize(ndArr, dim)
+    return cv2.resize(ndArr,dim)
 
 def gaussianBlur(ndArr , kernel = (15,15)):
     return cv2.GaussianBlur(ndArr, (kernel[0], kernel[1]), 0)

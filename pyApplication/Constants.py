@@ -17,8 +17,8 @@ class Constants():
 
     BOUNDING_BOX_THRESHOLD = 25*25
 
-    CV_DIMS = (240,320,3)
+    CV_DIMS = (320,240)
     FULL_IMAGE_SIZE = CV_DIMS[0]*CV_DIMS[1]
 
-    KERAS_INPUT_DIMS = (224,224,3)
+    KERAS_INPUT_DIMS = (224,224)
 
