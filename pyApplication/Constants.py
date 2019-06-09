@@ -9,7 +9,7 @@ class Constants():
     # if None , first frame will be base
     BASE = None# np.load("base.npy") # None
 
-    SOURCE = 1
+    SOURCE = 0
 
     MOTION_THRESHOLD = 30
     OPENNING_KERNEL = np.ones((10,10),np.uint8)
