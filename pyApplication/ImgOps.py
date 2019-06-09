@@ -2,7 +2,6 @@ from utilsFunctions import inputOutputValidation
 from Constants import Constants
 from PIL import Image
 import numpy as np
-import scipy.misc
 import cv2
 
 @inputOutputValidation
