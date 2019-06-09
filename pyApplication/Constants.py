@@ -3,7 +3,7 @@ import numpy as np
 class Constants():
 
     VERBOSE = True
-    VERBOSE_UI = True
+    VERBOSE_UI = False
 
     # type np.ndarr
     # if None , first frame will be base
