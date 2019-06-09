@@ -1,6 +1,5 @@
-from tensorflow.python.keras.models import load_model
+from utils import showImage, USBCamera, Models
 from utilsFunctions import targetFunctions
-from utils import showImage, USBCamera
 from Constants import Constants
 import numpy as np
 import ImgOps
@@ -9,7 +8,7 @@ import cv2
 def Main():
 
     src = USBCamera()
-    model = load_model(Constants.MODEL_PATH)
+    model = Models.getModel()
     base = Constants.BASE
 
     iterNum = 1
@@ -30,8 +29,6 @@ def Main():
         frame_open      = ImgOps.openning(frame_thresh)
 
         cv2.imshow("frame_diff", frame_diff)        if Constants.VERBOSE_UI else None
-        cv2.imshow("frame_thresh", frame_thresh)    if Constants.VERBOSE_UI else None
-        cv2.imshow("frame_open", frame_open)        if Constants.VERBOSE_UI else None
 
         contours = ImgOps.getContours(frame_open)
 
@@ -54,6 +51,7 @@ def Main():
         iterNum +=1
         ret, frame = src.read()
 
+    print("Releasing resources and closing opened windows")
     src.release()
     cv2.destroyAllWindows()
 
