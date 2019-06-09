@@ -15,9 +15,7 @@ class Constants():
     OPENNING_KERNEL = np.ones((10,10),np.uint8)
     DILATION_KERNEL = np.ones((10,10),np.uint8)
 
-    BOUNDING_BOX_THRESHOLD = 50*50
-
-    MODEL_PATH = 'my_model9792.h5'
+    BOUNDING_BOX_THRESHOLD = 25*25
 
     CV_DIMS = (240,320,3)
     FULL_IMAGE_SIZE = CV_DIMS[0]*CV_DIMS[1]
